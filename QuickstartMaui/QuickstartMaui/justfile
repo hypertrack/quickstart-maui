@@ -1,6 +1,7 @@
 alias b := build
 alias ba := build-android
 alias bi := build-ios
+alias c := clean
 
 build:
     dotnet build
@@ -14,5 +15,8 @@ build-android:
 
 build-ios:
     dotnet build -t:Run -f net9.0-ios
+
+clean:
+    dotnet clean
 
 

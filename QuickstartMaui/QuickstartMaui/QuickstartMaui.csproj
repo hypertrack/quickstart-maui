@@ -29,26 +29,9 @@
 
 	</PropertyGroup>
 
-	<ItemGroup>
-		<AndroidMavenLibrary Include="com.hypertrack:sdk-android" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/"/>
-		<AndroidMavenLibrary Include="com.hypertrack:location-services-google" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:push-service-firebase" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:activity-service-google" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:location-services" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:sdk-android-model" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:push-service" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-		<AndroidMavenLibrary Include="com.hypertrack:activity-service" Version="7.10.0" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false"/>
-
-		<AndroidMavenLibrary Include="org.jetbrains:annotations" Version="13.0" Bind="false"/>
-		<AndroidMavenLibrary Include="org.jetbrains.kotlinx:kotlinx-serialization-json-jvm" Version="1.3.3" Bind="false"/>
-		<AndroidMavenLibrary Include="org.jetbrains.kotlinx:kotlinx-serialization-core-jvm" Version="1.3.3" Bind="false"/>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<ProjectReference Include="..\..\..\maui-binding-android\maui-binding-android.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<!-- Added by Xamarin.Kotlin.StdLib.Jdk8 -->
-		<AndroidIgnoredJavaDependency Include="org.jetbrains.kotlin:kotlin-stdlib:1.6.21" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -62,7 +45,7 @@
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 	    <!-- 2.8.5.1 Already included by Xamarin.AndroidX.AppCompat -->
 		<!-- <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.5.1.1" /> -->
-		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.5.1" />
+		<!-- <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.5.1" />
 
 		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.9.0.1" />
 		<PackageReference Include="Xamarin.Kotlin.StdLib.Common" Version="2.0.10.1" />
@@ -71,9 +54,7 @@
 
 		<PackageReference Include="Xamarin.GooglePlayServices.Location" Version="121.0.1.5" />
 
-		<PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.1.1" />
-
-
+		<PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.1.1" /> -->
 	</ItemGroup>
 
 	<ItemGroup>
