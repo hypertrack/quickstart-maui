@@ -1,5 +1,7 @@
 ﻿namespace QuickstartMaui;
 
+using Com.Hypertrack.Sdk.Android;
+
 public partial class MainPage : ContentPage
 {
 	int count = 0;
@@ -7,6 +9,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+		DeviceIdLabel.Text = HyperTrack.DeviceID;
 	}
 
 	private void OnCounterClicked(object sender, EventArgs e)
