@@ -25,12 +25,12 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
-		<WarningLevel>0</WarningLevel>
+		<WarningLevel>3</WarningLevel>
 
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
-		<ProjectReference Include="..\..\..\maui-binding-android\maui-binding-android.csproj" />
+		<ProjectReference Include="..\..\..\sdk-maui\sdk-maui.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
