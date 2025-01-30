@@ -29,6 +29,13 @@
 
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	</ItemGroup>
+
+	<!-- Android -->
+
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<ProjectReference Include="..\..\..\sdk-maui\android\sdk-maui.csproj" />
 	</ItemGroup>
@@ -57,9 +64,10 @@
 		<PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.1.1" /> -->
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	<!-- iOS -->
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+		<ProjectReference Include="..\..\..\sdk-maui\ios\binding-ios\binding-ios.csproj" />
 	</ItemGroup>
 
 </Project>
