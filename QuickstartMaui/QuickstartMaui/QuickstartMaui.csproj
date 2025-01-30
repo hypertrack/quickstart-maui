@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
-		<ProjectReference Include="..\..\..\sdk-maui\sdk-maui.csproj" />
+		<ProjectReference Include="..\..\..\sdk-maui\android\sdk-maui.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
