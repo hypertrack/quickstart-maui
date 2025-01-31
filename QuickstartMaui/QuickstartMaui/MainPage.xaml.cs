@@ -5,7 +5,7 @@ using Com.Hypertrack.Sdk.Android;
 #endif
 
 #if IOS
-// using UIKit;
+using binding_ios;
 #endif
 
 public partial class MainPage : ContentPage
@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
 		#endif
 
 		#if IOS
-		DeviceIdLabel.Text = "iOS Device ID";
+		DeviceIdLabel.Text = HyperTrackMauiWrapper.DeviceId;
 		#endif
 	}
 
