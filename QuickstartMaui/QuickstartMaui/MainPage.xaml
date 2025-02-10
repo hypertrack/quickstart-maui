@@ -17,12 +17,11 @@
             <Label
                 x:Name="DeviceIdLabel" />
 
-            <!-- <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" /> -->
+            <Button
+                x:Name="ActionBtn"
+                Text="Action" 
+                Clicked="OnActionClicked"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

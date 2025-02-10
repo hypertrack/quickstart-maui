@@ -1,5 +1,6 @@
 ﻿namespace QuickstartMaui;
 
+using GoogleGson.Annotations;
 using HyperTrack;
 
 public partial class MainPage : ContentPage
@@ -13,16 +14,19 @@ public partial class MainPage : ContentPage
 		DeviceIdLabel.Text = HyperTrack.DeviceId;
 	}
 
-	// private void OnCounterClicked(object sender, EventArgs e)
-	// {
-	// 	count++;
+	private void OnActionClicked(object sender, EventArgs e)
+	{
+		Dictionary<string, object?> data = new Dictionary<string, object?>
+        {
+            { "testKey", "testValue" }
+        };
+		HyperTrack.Json.Object json = HyperTrack.Json.FromMap(data);
 
-	// 	if (count == 1)
-	// 		CounterBtn.Text = $"Clicked {count} time";
-	// 	else
-	// 		CounterBtn.Text = $"Clicked {count} times";
-
-	// 	SemanticScreenReader.Announce(CounterBtn.Text);
-	// }
+		ActionBtn.Text = HyperTrack.AddGeotag(
+			"orderHandle",
+			new HyperTrack.OrderStatus.ClockIn(),
+			json
+		).ToString();
+	}
 }
 
