@@ -1,12 +1,6 @@
 ﻿namespace QuickstartMaui;
 
-#if ANDROID
-using Com.Hypertrack.Sdk.Android;
-#endif
-
-#if IOS
-using binding_ios;
-#endif
+using HyperTrack;
 
 public partial class MainPage : ContentPage
 {
@@ -16,13 +10,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		#if ANDROID
-		DeviceIdLabel.Text = HyperTrack.DeviceID;
-		#endif
-
-		#if IOS
-		DeviceIdLabel.Text = HyperTrackMauiWrapper.DeviceId;
-		#endif
+		DeviceIdLabel.Text = HyperTrack.DeviceId;
 	}
 
 	// private void OnCounterClicked(object sender, EventArgs e)

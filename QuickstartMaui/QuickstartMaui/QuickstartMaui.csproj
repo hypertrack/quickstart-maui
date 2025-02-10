@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
 
 		<OutputType>Exe</OutputType>
 		<RootNamespace>QuickstartMaui</RootNamespace>
@@ -19,13 +18,9 @@
 		<WindowsPackageType>None</WindowsPackageType>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
-		<WarningLevel>3</WarningLevel>
+		<WarningLevel>0</WarningLevel>
 
 	</PropertyGroup>
 
@@ -36,12 +31,13 @@
 
 	<!-- Android -->
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	<!-- 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<ProjectReference Include="..\..\..\sdk-maui\android\sdk-maui.csproj" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg"
+			ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
@@ -50,7 +46,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
-	    <!-- 2.8.5.1 Already included by Xamarin.AndroidX.AppCompat -->
+		<!-- 2.8.5.1 Already included by Xamarin.AndroidX.AppCompat -->
 		<!-- <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.5.1.1" /> -->
 		<!-- <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.5.1" />
 
@@ -66,8 +62,13 @@
 
 	<!-- iOS -->
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+	<!-- <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
 		<ProjectReference Include="..\..\..\sdk-maui\ios\binding-ios\binding-ios.csproj" />
+	</ItemGroup> -->
+
+	<ItemGroup>
+		<ProjectReference
+			Include="..\..\..\sdk-maui\common\HyperTrackSdkMaui\HyperTrackSdkMaui.csproj" />
 	</ItemGroup>
 
 </Project>

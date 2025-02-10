@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Com.Hypertrack.Sdk;
 
 namespace QuickstartMaui;
 
