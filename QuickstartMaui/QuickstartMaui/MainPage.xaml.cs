@@ -1,6 +1,5 @@
 ﻿namespace QuickstartMaui;
 
-using GoogleGson.Annotations;
 using HyperTrack;
 
 public partial class MainPage : ContentPage
@@ -22,11 +21,22 @@ public partial class MainPage : ContentPage
         };
 		HyperTrack.Json.Object json = HyperTrack.Json.FromMap(data);
 
-		ActionBtn.Text = HyperTrack.AddGeotag(
+		Result<HyperTrack.Location, HyperTrack.LocationError> result = HyperTrack.AddGeotag(
 			"orderHandle",
 			new HyperTrack.OrderStatus.ClockIn(),
 			json
-		).ToString();
+		);
+		
+		if (result.IsSuccess)
+		{
+			HyperTrack.Location location = result.Success;
+			ResultLabel.Text = "Location: " + "Latitude: " + location.Latitude + ", Longitude: " + location.Longitude;
+		}
+		else
+		{
+			ResultLabel.Text = result.Failure != null ? result.Failure.ToString() : "Error";
+			// ResultLabel.Text = result.Failure.ToString();
+		}
 	}
 }
 

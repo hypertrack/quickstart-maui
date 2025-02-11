@@ -17,6 +17,11 @@
             <Label
                 x:Name="DeviceIdLabel" />
 
+            <Label
+                Text="Result:" />
+            <Label
+                x:Name="ResultLabel" />
+
             <Button
                 x:Name="ActionBtn"
                 Text="Action" 
