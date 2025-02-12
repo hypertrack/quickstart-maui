@@ -19,7 +19,7 @@ public partial class MainPage : ContentPage
         {
             { "testKey", "testValue" }
         };
-		HyperTrack.Json.Object json = HyperTrack.Json.FromMap(data);
+		HyperTrack.Json.Object json = HyperTrack.Json.FromDictionary(data);
 
 		Result<HyperTrack.Location, HyperTrack.LocationError> result = HyperTrack.AddGeotag(
 			"orderHandle",
