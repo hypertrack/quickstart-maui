@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
         };
 		HyperTrack.Json.Object json = HyperTrack.Json.FromDictionary(data);
 
-		Result<HyperTrack.Location, HyperTrack.LocationError> result = HyperTrack.AddGeotag(
+		HyperTrack.Result<HyperTrack.Location, HyperTrack.LocationError> result = HyperTrack.AddGeotag(
 			"orderHandle",
 			new HyperTrack.OrderStatus.ClockIn(),
 			json
