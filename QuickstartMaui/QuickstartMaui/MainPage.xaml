@@ -15,7 +15,17 @@
             <Label
                 Text="Device ID:" />
             <Label
-                x:Name="DeviceIdLabel" />
+                x:Name="DeviceIdLabel">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnDeviceIdLabelTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label
+                Text="WorkerHandle:" />
+            <Label
+                x:Name="WorkerHandleLabel"/>
 
             <Label
                 Text="Result:" />
@@ -23,9 +33,15 @@
                 x:Name="ResultLabel" />
 
             <Button
-                x:Name="ActionBtn"
-                Text="Action" 
-                Clicked="OnActionClicked"
+                x:Name="AddGeotagButton"
+                Text="Add Geotag" 
+                Clicked="OnAddGeotagClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="GetOrdersButton"
+                Text="Get Orders"
+                Clicked="OnGetOrdersClicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
