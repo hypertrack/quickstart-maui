@@ -7,9 +7,6 @@ build:
     dotnet build
 
 build-android:
-    #!/usr/bin/env sh
-    set -euo pipefail
-    
     # assuming JAVA_HOME="/opt/homebrew/opt/openjdk@17"
     dotnet build -t:Run -f net9.0-android -p:Configuration=Debug -p:JavaSdkDirectory="$JAVA_HOME/libexec/openjdk.jdk/Contents/Home"
 
