@@ -1,4 +1,6 @@
-﻿namespace QuickstartMaui;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace QuickstartMaui;
 
 using System.Text;
 using HyperTrack;
@@ -6,17 +8,15 @@ using Microsoft.Maui.ApplicationModel.DataTransfer;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
 
 # if ANDROID
-		var osSuffix = "android";
+		const string osSuffix = "android";
 # endif
 # if IOS
-		var osSuffix = "ios";
+		const string osSuffix = "ios";
 # endif
 		HyperTrack.WorkerHandle = "test_worker_quickstart_maui_" + osSuffix;
 
@@ -26,13 +26,13 @@ public partial class MainPage : ContentPage
 
 	private void OnAddGeotagClicked(object sender, EventArgs e)
 	{
-		Dictionary<string, object?> data = new Dictionary<string, object?>
+		var data = new Dictionary<string, object?>
 		{
 			{ "testKey", "testValue" }
 		};
-		HyperTrack.Json.Object json = HyperTrack.Json.FromDictionary(data);
+		var json = HyperTrack.Json.FromDictionary(data);
 
-		HyperTrack.Result<HyperTrack.Location, HyperTrack.LocationError> result = HyperTrack.AddGeotag(
+		var result = HyperTrack.AddGeotag(
 			"orderHandle",
 			new HyperTrack.OrderStatus.ClockIn(),
 			json
@@ -40,18 +40,18 @@ public partial class MainPage : ContentPage
 
 		if (result.IsSuccess)
 		{
-			HyperTrack.Location location = result.Success;
+			var location = result.Success;
 			ResultLabel.Text = "Location: " + "Latitude: " + location.Latitude + ", Longitude: " + location.Longitude;
 		}
 		else
 		{
-			ResultLabel.Text = result.Failure != null ? result.Failure.ToString() : "Error";
+			ResultLabel.Text = result.Failure != null ? result.Failure.ToString()! : "Error";
 		}
 	}
 
 	private void OnGetOrdersClicked(object sender, EventArgs e)
 	{
-		Dictionary<string, HyperTrack.Order> orders = HyperTrack.Orders;
+		var orders = HyperTrack.Orders;
 		ResultLabel.Text = "Orders:\n" + GetOrdersText(orders);
 	}
 
@@ -63,41 +63,29 @@ public partial class MainPage : ContentPage
 
 	private string GetOrdersText(Dictionary<string, HyperTrack.Order> orders)
 	{
-		StringBuilder sb = new StringBuilder();
-		foreach (KeyValuePair<string, HyperTrack.Order> kv in orders)
+		var sb = new StringBuilder();
+		foreach (var order in orders.Select(kv => kv.Value))
 		{
-			HyperTrack.Order order = kv.Value;
 			sb.Append(order.OrderHandle + ",\nisInsideGeofence: " + GetIsInsideGeofenceText(order.IsInsideGeofence) + "\n");
 		}
 		return sb.ToString();
 	}
 
-	private string GetIsInsideGeofenceText(HyperTrack.Result<bool, HyperTrack.LocationError> isInsideGeofence)
+	private static string GetIsInsideGeofenceText(HyperTrack.Result<bool, HyperTrack.LocationError> isInsideGeofence)
 	{
-		if (isInsideGeofence.IsSuccess)
-		{
-			return isInsideGeofence.Success.ToString();
-		}
-		else
-		{
-			return GetLocationErrorText(isInsideGeofence.Failure);
-		}
+		return isInsideGeofence.IsSuccess ? isInsideGeofence.Success.ToString() : GetLocationErrorText(isInsideGeofence.Failure);
 	}
 
-	private string GetLocationErrorText(HyperTrack.LocationError locationError)
+	private static string GetLocationErrorText(HyperTrack.LocationError locationError)
 	{
-		switch (locationError)
+		return locationError switch
 		{
-			case HyperTrack.LocationError.NotRunning:
-			case HyperTrack.LocationError.Starting:
-				return locationError.ToString();
-			case HyperTrack.LocationError.Errors errors:
-				return string.Join(", ", errors.ErrorSet.Select(error => error.ToString()));
-			default:
-				throw new InvalidOperationException("Unknown location error type.");
-		}
+			HyperTrack.LocationError.NotRunning or HyperTrack.LocationError.Starting => locationError.ToString(),
+			HyperTrack.LocationError.Errors errors => string.Join(", ",
+				errors.ErrorSet.Select(error => error.ToString())),
+			_ => throw new InvalidOperationException("Unknown location error type.")
+		};
 	}
-
 
 }
 
