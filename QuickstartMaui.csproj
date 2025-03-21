@@ -25,8 +25,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="HyperTrack.SDK.MAUI" Version="1.0.0" />
-		<PackageReference Include="HyperTrack.SDK.MAUI.Test" Version="0.0.3" />
+		<PackageReference Include="HyperTrack.SDK.MAUI" Version="1.0.1" />
 		
 		<!-- Workaround for MAUI bug that causes Android libraries that povide .jar to not be packed into the package -->
 		<AndroidMavenLibrary Include="com.hypertrack:sdk-android-model" Version="7.11.4" Repository="https://s3-us-west-2.amazonaws.com/m2.hypertrack.com/" Bind="false" Condition="'$(TargetFramework)' == 'net9.0-android'" />
