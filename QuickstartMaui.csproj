@@ -10,7 +10,7 @@
 		<Nullable>enable</Nullable>
 
 		<ApplicationTitle>QuickstartMaui</ApplicationTitle>
-		<ApplicationId>com.companyname.quickstartmaui</ApplicationId>
+		<ApplicationId>com.hypertrack.quickstart.maui</ApplicationId>
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
@@ -39,6 +39,13 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+
+		<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="3.1.2" Condition="'$(TargetFramework)' == 'net9.0-android'"/>
+<!--		<PackageReference Include="Xamarin.Firebase.Messaging" Version="124.1.0.1" Condition="'$(TargetFramework)' == 'net9.0-android'"/>-->
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<GoogleServicesJson Include="google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
