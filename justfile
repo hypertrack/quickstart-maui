@@ -10,6 +10,8 @@ alias ra := run-android
 alias ri := run-ios
 alias rls := remove-local-source
 
+JAVA_HOME := "/opt/homebrew/opt/openjdk@17"
+
 add-plugin version: clean
     dotnet remove QuickstartMaui.csproj reference ../sdk-maui/HyperTrackSdkMaui/HyperTrackSdkMaui.csproj || true
     dotnet add package HyperTrack.SDK.MAUI --version {{version}}
@@ -31,12 +33,13 @@ build:
     dotnet build
 
 build-android:
-    # assuming JAVA_HOME="/opt/homebrew/opt/openjdk@17"
-    dotnet build -t:Run -f net9.0-android -p:Configuration=Debug -p:JavaSdkDirectory="$JAVA_HOME/libexec/openjdk.jdk/Contents/Home"
+    dotnet build -t:Build -f net9.0-android -p:Configuration=Debug -p:JavaSdkDirectory="{{JAVA_HOME}}"
 
 build-ios:
-    # dotnet build -t:Run -v diag --debug -f net9.0-ios
-    dotnet build -t:Run -f net9.0-ios
+    # add -v diag --debug for verbosity
+    # add -r ios-arm64 to build for read device
+    dotnet build QuickstartMaui.csproj -t:Build -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false
+    
 
 clean:
     dotnet clean
@@ -59,6 +62,13 @@ get-sdk-aars:
 remove-local-source:
     dotnet nuget remove source HyperTrackSdkMauiLocalSource || true
 
-run-android: build-android
+run-android: 
+    dotnet build -t:Build -f net9.0-android -p:Configuration=Debug -p:JavaSdkDirectory="{{JAVA_HOME}}"
 
-run-ios: build-ios
+run-ios: #build-ios
+    #!/usr/bin/env sh
+    set -euo pipefail
+
+    dotnet build QuickstartMaui.csproj -t:Run -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false -r ios-arm64
+    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --installdev bin/Release/net9.0-ios/ios-arm64/QuickstartMaui.app/ --wait-for-exit:false
+    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --launchdev bin/Release/net9.0-ios/ios-arm64/QuickstartMaui.app/ --devname 55513da5cd9f0628de47a812a956ad9495132c4c --stdout /dev/ttys001 --stderr /dev/ttys001
