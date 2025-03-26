@@ -1,4 +1,4 @@
-namespace QuickstartMaui.Tests;
+namespace AutotestMaui.Tests;
 
 using HyperTrack;
 using System.Threading.Tasks;

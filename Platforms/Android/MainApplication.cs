@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace QuickstartMaui;
+namespace AutotestMaui;
 
 [Application]
 public class MainApplication : MauiApplication

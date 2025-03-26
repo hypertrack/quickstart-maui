@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace QuickstartMaui;
+namespace AutotestMaui;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

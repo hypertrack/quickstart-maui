@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace QuickstartMaui;
+namespace AutotestMaui;
 
 public class Program
 {

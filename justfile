@@ -40,7 +40,6 @@ build-ios:
     # add -r ios-arm64 to build for read device
     dotnet build QuickstartMaui.csproj -t:Build -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false
     
-
 clean:
     dotnet clean
     rm -rf bin

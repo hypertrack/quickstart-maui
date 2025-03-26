@@ -1,4 +1,4 @@
-﻿namespace QuickstartMaui;
+﻿namespace AutotestMaui;
 
 public partial class AppShell : Shell
 {
