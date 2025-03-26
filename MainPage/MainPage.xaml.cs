@@ -25,7 +25,15 @@ public partial class MainPage : ContentPage
 		InitializeControls();
 		SetupSubscriptions();
 	}
-	
+
+	public void AddLog(string text)
+	{
+		MainThread.BeginInvokeOnMainThread(() =>
+		{
+			LogsLabel.Text = $"{DateTime.Now:HH:mm:ss.fff}: {text}\n{LogsLabel.Text}";
+		});
+	}
+
 	private void InitializeControls()
 	{
 		DeviceIdLabel.Text = HyperTrack.DeviceId;
@@ -264,6 +272,26 @@ public partial class MainPage : ContentPage
 	{
 		var allowMockLocation = HyperTrack.AllowMockLocation;
 		await DisplayAlert("AllowMockLocation", allowMockLocation.ToString(), "OK");
+	}
+
+	private async void OnRunTestsErrorsClicked(object sender, EventArgs e)
+	{
+		await Tests.Tests.RunTestsErrors();
+	}
+	
+	private async void OnRunTestsTrackingClicked(object sender, EventArgs e)
+	{
+		await Tests.Tests.RunTestsTracking();
+	}
+	
+	private async void OnRunTestsOrdersClicked(object sender, EventArgs e)
+	{
+		await Tests.Tests.RunTestsOrders();
+	}
+	
+	private async void OnRunTestsOrdersErrorsClicked(object sender, EventArgs e)
+	{
+		await Tests.Tests.RunTestsOrdersErrors();
 	}
 
 	private static string GetOrdersText(Dictionary<string, HyperTrack.Order> orders)

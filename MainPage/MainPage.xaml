@@ -5,6 +5,32 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label Text="Logs:" Style="{StaticResource SubHeadline}"/>
+            <ScrollView HeightRequest="200" BackgroundColor="#f0f0f0">
+                <Label x:Name="LogsLabel" Padding="10"/>
+            </ScrollView>
+            
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Run Tests Errors" 
+                        Clicked="OnRunTestsErrorsClicked"/>   
+            </HorizontalStackLayout>
+            
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Run Tests Tracking"
+                        Clicked="OnRunTestsTrackingClicked" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Run Tests Orders"
+                        Clicked="OnRunTestsOrdersClicked" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Run Tests Orders Errors"
+                        Clicked="OnRunTestsOrdersErrorsClicked" />
+            </HorizontalStackLayout>
+                
+
             <Label Text="Device ID:" Style="{StaticResource SubHeadline}"/>
             <Label x:Name="DeviceIdLabel">
                 <Label.GestureRecognizers>
