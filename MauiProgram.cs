@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace QuickstartMaui;
+namespace AutotestMaui;
 
 public static class MauiProgram
 {

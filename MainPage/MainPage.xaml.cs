@@ -2,7 +2,7 @@
 using System.Text.Json;
 using Microsoft.Maui.Devices; // Add this using directive
 
-namespace QuickstartMaui;
+namespace AutotestMaui;
 
 using System.Text;
 using HyperTrack;
@@ -41,12 +41,12 @@ public partial class MainPage : ContentPage
 		IsAvailableLabel.Text = HyperTrack.IsAvailable.ToString();
 
 		// Set initial name
-		HyperTrack.Name = "Quickstart Maui";
+		HyperTrack.Name = "Autotest Maui";
 
 		// Set initial metadata
 		var metadata = new Dictionary<string, object>
 		{
-			{ "source", "Quickstart Maui" },
+			{ "source", "Autotest Maui" },
 			{ "employee_id", Random.Shared.Next(10000) }
 		};
 		HyperTrack.Metadata = HyperTrack.Json.FromDictionary(metadata);
@@ -136,7 +136,7 @@ public partial class MainPage : ContentPage
 	{
 		var geotagPayload = new Dictionary<string, object>
 		{
-			{ "payload", "Quickstart Maui" },
+			{ "payload", "Autotest Maui" },
 			{ "value", Random.Shared.NextDouble() }
 		};
 
@@ -164,7 +164,7 @@ public partial class MainPage : ContentPage
 	{
 		var geotagPayload = new Dictionary<string, object>
 		{
-			{ "payload", "Quickstart Maui" },
+			{ "payload", "Autotest Maui" },
 			{ "value", Random.Shared.NextDouble() }
 		};
 

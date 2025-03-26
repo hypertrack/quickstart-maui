@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="QuickstartMaui.AppShell"
+    x:Class="AutotestMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:QuickstartMaui"
+    xmlns:local="clr-namespace:AutotestMaui"
     Shell.FlyoutBehavior="Flyout"
-    Title="QuickstartMaui">
+    Title="AutotestMaui">
 
     <ShellContent
         Title="Home"

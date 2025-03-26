@@ -8,8 +8,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<ApplicationTitle>QuickstartMaui</ApplicationTitle>
-		<ApplicationId>com.hypertrack.quickstart.maui</ApplicationId>
+		<ApplicationTitle>AutotestMaui</ApplicationTitle>
+		<ApplicationId>com.hypertrack.autotest.maui</ApplicationId>
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>

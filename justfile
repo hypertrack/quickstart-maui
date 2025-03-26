@@ -13,12 +13,12 @@ alias rls := remove-local-source
 JAVA_HOME := "/opt/homebrew/opt/openjdk@17"
 
 add-plugin version: clean
-    dotnet remove QuickstartMaui.csproj reference ../sdk-maui/HyperTrackSdkMaui/HyperTrackSdkMaui.csproj || true
+    dotnet remove AutotestMaui.csproj reference ../sdk-maui/HyperTrackSdkMaui/HyperTrackSdkMaui.csproj || true
     dotnet add package HyperTrack.SDK.MAUI --version {{version}}
 
 add-plugin-local: clean
-    dotnet remove QuickstartMaui.csproj reference HyperTrack.SDK.MAUI
-    dotnet add QuickstartMaui.csproj reference ../sdk-maui/HyperTrackSdkMaui/HyperTrackSdkMaui.csproj
+    dotnet remove AutotestMaui.csproj reference HyperTrack.SDK.MAUI
+    dotnet add AutotestMaui.csproj reference ../sdk-maui/HyperTrackSdkMaui/HyperTrackSdkMaui.csproj
 
 add-plugin-local-release version: clean
     #!/usr/bin/env sh
@@ -38,7 +38,7 @@ build-android:
 build-ios:
     # add -v diag --debug for verbosity
     # add -r ios-arm64 to build for read device
-    dotnet build QuickstartMaui.csproj -t:Build -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false
+    dotnet build AutotestMaui.csproj -t:Build -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false
     
 clean:
     dotnet clean
@@ -68,6 +68,6 @@ run-ios: #build-ios
     #!/usr/bin/env sh
     set -euo pipefail
 
-    dotnet build QuickstartMaui.csproj -t:Run -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false -r ios-arm64
-    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --installdev bin/Release/net9.0-ios/ios-arm64/QuickstartMaui.app/ --wait-for-exit:false
-    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --launchdev bin/Release/net9.0-ios/ios-arm64/QuickstartMaui.app/ --devname 55513da5cd9f0628de47a812a956ad9495132c4c --stdout /dev/ttys001 --stderr /dev/ttys001
+    dotnet build AutotestMaui.csproj -t:Run -f net9.0-ios -p:Configuration=Release -p:MtouchUseLlvm=false -r ios-arm64
+    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --installdev bin/Release/net9.0-ios/ios-arm64/AutotestMaui.app/ --wait-for-exit:false
+    # /usr/local/share/dotnet/packs/Microsoft.iOS.Sdk.net9.0_18.2/18.2.9173/tools/bin/mlaunch --launchdev bin/Release/net9.0-ios/ios-arm64/AutotestMaui.app/ --devname 55513da5cd9f0628de47a812a956ad9495132c4c --stdout /dev/ttys001 --stderr /dev/ttys001
