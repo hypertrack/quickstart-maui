@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuickstartMaui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label Text="Device ID:" Style="{StaticResource SubHeadline}"/>
+            <Label x:Name="DeviceIdLabel">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDeviceIdLabelTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            
+            <Label Text="Worker Handle:" Style="{StaticResource SubHeadline}"/>
+            <Label x:Name="WorkerHandleLabel"/>
+
+            <Label Text="Orders:" Style="{StaticResource SubHeadline}"/>
+            <Label x:Name="OrdersLabel" Text="N/A"/>
+
+            <Label Text="Location" Style="{StaticResource SubHeadline}"/>
+            <Label x:Name="LocationLabel"/>
+
+            <Label Text="Errors" Style="{StaticResource SubHeadline}"/>
+            <Label x:Name="ErrorsLabel" Text="No errors"/>
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="isTracking" Style="{StaticResource SubHeadline}"/>
+                <Label x:Name="IsTrackingLabel"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Start tracking" Clicked="OnStartTrackingClicked"/>
+                    <Button Text="Stop tracking" Clicked="OnStopTrackingClicked"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="isAvailable" Style="{StaticResource SubHeadline}"/>
+                <Label x:Name="IsAvailableLabel"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Set available" Clicked="OnSetAvailableClicked"/>
+                    <Button Text="Set unavailable" Clicked="OnSetUnavailableClicked"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Button Text="Add Geotag" Clicked="OnAddGeotagClicked"/>
+            <Button Text="Add Geotag with expected location" Clicked="OnAddGeotagWithExpectedLocationClicked"/>
+            <Button Text="Locate user" Clicked="OnLocateClicked"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Get errors" Clicked="OnGetErrorsClicked"/>
+                <Button Text="Get isAvailable" Clicked="OnGetIsAvailableClicked"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Get isTracking" Clicked="OnGetIsTrackingClicked"/>
+                <Button Text="Get location" Clicked="OnGetLocationClicked"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Get Metadata" Clicked="OnGetMetadataClicked"/>
+                <Button Text="Get Name" Clicked="OnGetNameClicked"/>
+            </HorizontalStackLayout>
+
+            <Button Text="Get Orders" Clicked="OnGetOrdersClicked"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Allow Mock Location" Clicked="OnAllowMockLocationClicked"/>
+                <Button Text="Disallow Mock Location" Clicked="OnDisallowMockLocationClicked"/>
+            </HorizontalStackLayout>
+            
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Get Allow Mock Location" Clicked="OnGetAllowMockLocationClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
