@@ -76,7 +76,7 @@ publish:
     rm -rf *
     cp -rf $QUICKSTART_ROOT/* .
     git add -A
-    git commit -m "Update the files ($COMMIT_HASH)" || true
+    git commit -m "Update the sources ($COMMIT_HASH)" || true
     git push --set-upstream origin $SOURCE_BRANCH
 
 remove-local-source:
